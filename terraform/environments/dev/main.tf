@@ -38,3 +38,11 @@ module "vpc" {
 module "ecr" {
   source = "../../modules/ecr"
 }
+
+module "eks" {
+  source = "../../modules/eks"
+
+  subnet_ids      = module.vpc.private_subnet_ids
+  node_subnet_ids = module.vpc.public_subnet_ids
+}
+
